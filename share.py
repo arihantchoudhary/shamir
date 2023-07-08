@@ -25,10 +25,11 @@ def share(n, k, s):
     # creating a polynomial of size (k-1)
     equation = galois.Poly.Random((k-1), field=GF)
     print("Before:", str(equation))
+    equation = equation - equation(0) + GF(s);
 
     # add secret to equation
-    replaced_eq = replace_coefficient(str(equation), s)
-    equation = galois.Poly.Str(replaced_eq, field=GF)
+    # replaced_eq = replace_coefficient(str(equation), s)
+    # equation = galois.Poly.Str(replaced_eq, field=GF)
     print("After:", str(equation))
    
     # Computing {y1, y2, ... yn} 
