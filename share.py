@@ -17,29 +17,32 @@ def share(n, k, s):
     print("Number of k shares needed to rebuild:", k)
 
     # n needs to be a prime number to be a field
-    copy = n
-    n = next_prime(n)  # function to set n to the first prime greater than n
-    GF = galois.GF(n)  # GF is a field of size n
-    print("Prime Field: ", n)
+    field = 1009    
+    # n = next_prime(n)  # function to set n to the first prime greater than n
+    GF = galois.GF(field)  # GF is a field of size n
+    print("Prime Field: ", field)
 
     # creating a polynomial of size (k-1)
     equation = galois.Poly.Random((k-1), field=GF)
     print("Before:", str(equation))
+    #removing x = 0 from the equation
     equation = equation - equation(0) + GF(s);
 
     # add secret to equation
     # replaced_eq = replace_coefficient(str(equation), s)
     # equation = galois.Poly.Str(replaced_eq, field=GF)
     print("After:", str(equation))
+    
+    
    
     # Computing {y1, y2, ... yn} 
     y_values = []
-    for i in range(copy):
-        temp = equation(i)
-        y_values.append(temp)
+    for i in range(1, n+1):
+        temp = int(equation(i))
+        y_values.append([i, temp])
 
     print("Y values given out", y_values)
-    return y_values
+    return y_values, k, n, field
 
 def is_prime(num):
     '''
@@ -56,7 +59,7 @@ def next_prime(n):
     '''
     Finds the next prime number greater than n.
     '''
-    next_num = n + 1
+    next_num = n*100 + 1
     while True:
         if is_prime(next_num):
             return next_num
