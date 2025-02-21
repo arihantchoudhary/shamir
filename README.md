@@ -1,7 +1,3 @@
-Below is a sample **README.md** you can include in your GitHub repo to explain this Shamir’s Secret Sharing implementation. Feel free to adjust any sections or wording to match your project’s style or requirements.
-
----
-
 # Shamir's Secret Sharing in Python
 
 This repository demonstrates a simple implementation of **Shamir’s Secret Sharing** (SSS) using the [**galois** Python library](https://github.com/mhostetter/galois). You can generate shares for a secret and then reconstruct the secret from those shares using polynomial interpolation over a finite field.
